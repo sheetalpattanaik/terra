@@ -68,11 +68,11 @@ resource "aws_security_group" "three" {
 }
 
 resource "aws_s3_bucket" "four" {
-  bucket = "sheetal"
+  bucket = "sheetal1459"
 }
 
 resource "aws_iam_user" "five" {
-name = "sheetal11" 
+name = "sheetaluser11" 
 }
 
 resource "aws_ebs_volume" "six" {
