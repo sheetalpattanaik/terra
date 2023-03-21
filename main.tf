@@ -1,16 +1,16 @@
 #this file consists of code for instances and sg
 provider "aws" {
-region = "ap-south-1"
-access_key = "AKIARSPNELGYCJEVYJ4K"
-secret_key = "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"
+region = "us-east-1"
+access_key = "AKIAYWPX5IFWZIGD3UGI"
+secret_key = "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"
 }
 
 resource "aws_instance" "one" {
   ami             = "ami-0d81306eddc614a45"
   instance_type   = "t2.micro"
-  key_name        = "rmk8s"
+  key_name        = "ansible"
   vpc_security_group_ids = [aws_security_group.three.id]
-  availability_zone = "ap-south-1a"
+  availability_zone = "us-east-1a"
   user_data       = <<EOF
 #!/bin/bash
 sudo -i
@@ -27,16 +27,16 @@ EOF
 resource "aws_instance" "two" {
   ami             = "ami-0d81306eddc614a45"
   instance_type   = "t2.micro"
-  key_name        = "rmk8s"
+  key_name        = "ansible"
   vpc_security_group_ids = [aws_security_group.three.id]
-  availability_zone = "ap-south-1b"
+  availability_zone = "us-east-1b"
   user_data       = <<EOF
 #!/bin/bash
 sudo -i
 yum install httpd -y
 systemctl start httpd
 chkconfig httpd on
-echo "hai all this is my website created by terraform infrastructurte by raham sir server-2" > /var/www/html/index.html
+echo "hai all this is my website created by terraform infrastructurte by sheetal" > /var/www/html/index.html
 EOF
   tags = {
     Name = "server-2"
@@ -68,15 +68,15 @@ resource "aws_security_group" "three" {
 }
 
 resource "aws_s3_bucket" "four" {
-  bucket = "raham0077552bucketterra"
+  bucket = "sheetal0077bucketterra"
 }
 
 resource "aws_iam_user" "five" {
-name = "rahamuser11" 
+name = "sheetal11" 
 }
 
 resource "aws_ebs_volume" "six" {
- availability_zone = "ap-south-1b"
+ availability_zone = "us-east-1b"
   size = 40
   tags = {
     Name = "ebs-001"
